@@ -1,5 +1,5 @@
-import { GET_DOCTOR_LIST_SUCCESS, GET_DOCTOR_LIST_FAILURE } from '../constants/index'
-import { getRequest } from "../../utils/apiUtils";
+import { GET_DOCTOR_LIST_SUCCESS, GET_DOCTOR_LIST_FAILURE } from '../../constants/index'
+import { getRequest } from "../../../utils/apiUtils";
 
 export const getDoctorListSuccess = (result) => {
     return {
@@ -17,7 +17,7 @@ export const getDoctorListFailure = (result) => {
 
 export const GetAllDoctors = () => {
     return async (dispatch, getState) => {
-        const { result, error } = await getRequest(`getdoctorlist`);
+        const { result, error } = await getRequest(`getdoctorlistbyadmin`);
 
         if (!error) {
             return dispatch(getDoctorListSuccess(result))

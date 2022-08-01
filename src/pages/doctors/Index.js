@@ -1,9 +1,11 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { GetAllDoctors } from "../../container/actions/getDoctorList.action";
+import { GetAllDoctors } from "../../container/actions/doctor/getDoctorList.action";
 import { Table } from "antd";
 import { ThreeDots } from "../../components/common/Icons";
 import { useNavigate } from 'react-router-dom'
+import { updateDoctorStatus } from "../../container/actions/doctor/updateDoctorStatus.action";
+import { sendNotification } from "../../utils/Utilities";
 
 const Doctors = () => {
   const dispatch = useDispatch();
@@ -11,8 +13,6 @@ const Doctors = () => {
   const doctorListReducer = useSelector((state) => state.doctorListReducer);
 
   const [doctorData, setDoctorData] = useState([]);
-
-  console.log(doctorData, "doctorData");
 
   useEffect(() => {
     dispatch(GetAllDoctors());
@@ -29,6 +29,17 @@ const Doctors = () => {
     navigate(`/doctor/${id}`, {
       state: record,
       replace: true
+    })
+  }
+
+  const takeAction = ({status, id}) => {
+    dispatch(updateDoctorStatus({data: {status}, id})).then((res) => {
+      const { payload } = res;
+      if(payload.success){
+        sendNotification({type: 'success', message: payload.message })
+      } else {
+        sendNotification({type: 'error', message: 'Something went wrong'})
+      }
     })
   }
 
@@ -87,6 +98,12 @@ const Doctors = () => {
               <div class="dropdown-menu dropdown-menu-right">
                 <button onClick={() => goToDoctorById(_id, record)} class="dropdown-item" type="button">
                   Edit
+                </button>
+                <button onClick={() => takeAction({status: 1, id: _id})} class="dropdown-item" type="button">
+                  Approve
+                </button>
+                <button onClick={() => takeAction({status: 2, id: _id})} class="dropdown-item" type="button">
+                  Reject
                 </button>
               </div>
             {/* </div> */}

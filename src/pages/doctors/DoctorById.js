@@ -1,25 +1,22 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { useLocation, useRoutes } from "react-router-dom";
-import { isValidObject } from "../../utils/Utilities";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { isValidObject, sendNotification } from "../../utils/Utilities";
 import { Card, Tabs, Image } from "antd";
-import Toggle from "../../components/common/toggle";
-import { useForm } from "react-hook-form";
-import { ThreeDots } from "../../components/common/Icons";
+import { updateDoctorStatus } from "../../container/actions/doctor/updateDoctorStatus.action";
+import { useDispatch } from "react-redux";
+
 
 const { TabPane } = Tabs;
 
 const DoctorById = () => {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
   const { state } = useLocation();
   // const {back} = useRoutes()
 
-  const [dData, setDData] = useState({});
+  const { dId } = useParams()
 
-  const {
-    register,
-    handleSubmit,
-    setValue,
-    formState: { errors },
-  } = useForm();
+  const [dData, setDData] = useState({});
 
   useEffect(() => {
     if (isValidObject(state)) {
@@ -35,31 +32,43 @@ const DoctorById = () => {
     doctor_name,
     gender,
     specialization,
-    offline_appointment_time,
-    online_appointment_time,
-    both_appointment_time,
-    college_or_institute,
-    completion_year,
     degree,
-    doctor_registration_no,
-    establishment_city,
-    establishment_locality,
-    establishment_name,
-    experience_year,
-    medical_registration_council,
-    registration_year,
     identity_proof,
     establishment_proof,
     medical_proof,
-    profile_image,
-    offline_clinic_address,
-    offline_first_time_fees,
-    offline_normal_fees,
-    online_clinic_address,
-    online_first_time_fees,
-    online_normal_fees,
-    street_address,
+    // offline_appointment_time,
+    // online_appointment_time,
+    // both_appointment_time,
+    // college_or_institute,
+    // completion_year,
+    // doctor_registration_no,
+    // establishment_city,
+    // establishment_locality,
+    // establishment_name,
+    // experience_year,
+    // medical_registration_council,
+    // registration_year,
+    // profile_image,
+    // offline_clinic_address,
+    // offline_first_time_fees,
+    // offline_normal_fees,
+    // online_clinic_address,
+    // online_first_time_fees,
+    // online_normal_fees,
+    // street_address,
   } = dData;
+
+  const takeAction = ({status, id}) => {
+    console.log("first")
+    dispatch(updateDoctorStatus({data: {status}, id})).then((res) => {
+      const { payload } = res;
+      if(payload.success){
+        sendNotification({type: 'success', message: payload.message })
+      } else {
+        sendNotification({type: 'error', message: 'Something went wrong'})
+      }
+    })
+  }
 
   return (
     <Fragment>
@@ -79,16 +88,23 @@ const DoctorById = () => {
             </button>
             <div class="dropdown-menu dropdown-menu-right">
               <button
-                // onClick={() => goToDoctorById(_id, record)}
+                onClick={() => takeAction({status: 1, id: dId})}
                 class="dropdown-item"
                 type="button"
               >
-                Edit
+                Approve
+              </button>
+              <button
+                onClick={() => takeAction({status: 2, id: dId})}
+                class="dropdown-item"
+                type="button"
+              >
+                Reject
               </button>
             </div>
           </div>
           <div className="col-2">
-            <button className="btn">Go Back</button>
+            <button onClick={() => navigate(-1)} className="btn">Go Back</button>
           </div>
         </div>
       </div>
