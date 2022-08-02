@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { isValidObject, sendNotification } from "../../utils/Utilities";
-import { Card, Tabs, Image } from "antd";
+import { Card, Tabs, Image, Button } from "antd";
 import { updateDoctorStatus } from "../../container/actions/doctor/updateDoctorStatus.action";
 import { useDispatch } from "react-redux";
 
@@ -59,7 +59,6 @@ const DoctorById = () => {
   } = dData;
 
   const takeAction = ({status, id}) => {
-    console.log("first")
     dispatch(updateDoctorStatus({data: {status}, id})).then((res) => {
       const { payload } = res;
       if(payload.success){
@@ -74,37 +73,10 @@ const DoctorById = () => {
     <Fragment>
       <div className="row">
         <div className="d-flex align-items-center">
-          <div className="col-9"></div>
-          <div className="col-1">
-            <button
-              type="button"
-              class="btn btn-secondary btn-sm dropdown-toggle"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              <span>Action</span>
-              {/* <ThreeDots /> */}
-            </button>
-            <div class="dropdown-menu dropdown-menu-right">
-              <button
-                onClick={() => takeAction({status: 1, id: dId})}
-                class="dropdown-item"
-                type="button"
-              >
-                Approve
-              </button>
-              <button
-                onClick={() => takeAction({status: 2, id: dId})}
-                class="dropdown-item"
-                type="button"
-              >
-                Reject
-              </button>
-            </div>
-          </div>
-          <div className="col-2">
-            <button onClick={() => navigate(-1)} className="btn">Go Back</button>
+          <div className="text-end">
+            <Button onClick={() => takeAction({status: 1, id: dId})} className="btn">Approve</Button>
+            <Button onClick={() => takeAction({status: 2, id: dId})} className="btn">Reject</Button>
+            <Button onClick={() => navigate(-1)} className="btn">Go Back</Button>
           </div>
         </div>
       </div>
