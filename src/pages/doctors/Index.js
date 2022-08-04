@@ -88,25 +88,11 @@ const Doctors = () => {
             {/* <div class="btn-group"> */}
               <button
                 type="button"
-                class="btn btn-secondary btn-sm dropdown-toggle"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
+                class="btn btn-secondary btn-sm"
+                onClick={() => goToDoctorById(_id, record)}
               >
-                <ThreeDots />
+                View
               </button>
-              <div class="dropdown-menu dropdown-menu-right">
-                <button onClick={() => goToDoctorById(_id, record)} class="dropdown-item" type="button">
-                  Edit
-                </button>
-                <button onClick={() => takeAction({status: 1, id: _id})} class="dropdown-item" type="button">
-                  Approve
-                </button>
-                <button onClick={() => takeAction({status: 2, id: _id})} class="dropdown-item" type="button">
-                  Reject
-                </button>
-              </div>
-            {/* </div> */}
           </>
         );
       },
