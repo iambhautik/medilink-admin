@@ -14,7 +14,6 @@ const Login = () => {
   const { register, handleSubmit, formState: {errors} } = useForm()
 
   const onFinish = (values) => {
-    console.log(values, "values")
     dispatch(adminLogin(values)).then((res) => {
       const { payload } = res;
       console.log(payload, "payload");
