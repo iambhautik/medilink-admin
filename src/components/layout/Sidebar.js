@@ -1,8 +1,16 @@
 import React, { Fragment } from "react";
 import { DoctorIcon } from "../common/Icons";
+import { useNavigate } from 'react-router-dom'
 import { Link } from "react-router-dom";
+import { Button } from 'antd'
 
 const Sidebar = () => {
+  const navigate = useNavigate()
+  const logout = () => {
+    console.log("first")
+    localStorage.clear()
+    navigate('/login')
+  }
   return (
     <Fragment>
       <div>
@@ -21,7 +29,22 @@ const Sidebar = () => {
             <ul class="nav nav-pills flex-column mb-auto">
               <li class="nav-item">
                 <Link to='/doctors' class="nav-link active" aria-current="page">
-                  Home
+                  All application
+                </Link>
+              </li>
+              <li class="nav-item mt-3">
+                <Link to='/pendingapp' class="nav-link active" aria-current="page">
+                  Pending for approval
+                </Link>
+              </li>
+              <li class="nav-item mt-3">
+                <Link to='/approved' class="nav-link active" aria-current="page">
+                  Approved
+                </Link>
+              </li>
+              <li class="nav-item mt-3">
+                <Link to='/rejectedapp' class="nav-link active" aria-current="page">
+                  Rejected
                 </Link>
               </li>
             </ul>
@@ -54,9 +77,7 @@ const Sidebar = () => {
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="#">
-                  Sign out
-                </a>
+              <Button onClick={() => logout()} type="text">Text Button</Button>
               </li>
             </ul>
           </div>

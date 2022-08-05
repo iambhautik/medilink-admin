@@ -13,8 +13,6 @@ const DoctorById = () => {
   const { state } = useLocation();
   // const {back} = useRoutes()
 
-  console.log(state, "state");
-
   const { dId } = useParams();
 
   const [dData, setDData] = useState({});
