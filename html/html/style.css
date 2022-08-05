@@ -1,26 +1,26 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 /* sidebar start */
 .scroll_bar {
-  overflow-y: scroll;
-  height: 100vh;
+    overflow-y: scroll;
+    height: 100vh;
 }
 .scroll_bar::-webkit-scrollbar {
-  width: 0px;
+    width: 0px;
 }
 /* sidebar end */
 
 
 /* content start */
 .scroll_bar1 {
-  overflow-y: scroll;
-  height: 94vh;
+    overflow-y: scroll;
+    height: 94vh;
 }
 .scroll_bar1::-webkit-scrollbar {
-  width: 0px;
+    width: 0px;
 }
 /* content end */
