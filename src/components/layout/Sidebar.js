@@ -103,14 +103,14 @@ const Sidebar = () => {
               class="dropdown-menu text-small shadow"
               aria-labelledby="dropdownUser2"
             >
-              <li>
+              {/* <li>
                 <a class="dropdown-item" href="#">
                   Profile
                 </a>
-              </li>
+              </li> */}
               <li>
                 <Button onClick={() => logout()} type="text">
-                  Text Button
+                  Logout
                 </Button>
               </li>
             </ul>
