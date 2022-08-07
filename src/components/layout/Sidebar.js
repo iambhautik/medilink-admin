@@ -9,10 +9,16 @@ const Sidebar = () => {
   const { pathname } = useLocation();
 
   const logout = () => {
-    console.log("first");
     localStorage.clear();
     navigate("/login");
   };
+
+  const getClassName = (currentTab) => {
+    if(pathname.split("/").includes(currentTab)){
+      return 'active'
+    }
+    return ''
+  }
   return (
     <Fragment>
       <div>
@@ -33,7 +39,7 @@ const Sidebar = () => {
                 <Link
                   to="/doctors"
                   class={`nav-link text-white ${
-                    pathname.split("/").includes("doctors") ? "active" : ""
+                    getClassName('doctors')
                   }`}
                   aria-current="page"
                 >
@@ -44,7 +50,7 @@ const Sidebar = () => {
                 <Link
                   to="/pendingapp"
                   class={`nav-link text-white ${
-                    pathname.split("/").includes("pendingapp") ? "active" : ""
+                    getClassName('pendingapp')
                   }`}
                   aria-current="page"
                 >
@@ -55,7 +61,7 @@ const Sidebar = () => {
                 <Link
                   to="/approved"
                   class={`nav-link text-white ${
-                    pathname.split("/").includes("approved") ? "active" : ""
+                    getClassName('approved')
                   }`}
                   aria-current="page"
                 >
@@ -66,7 +72,7 @@ const Sidebar = () => {
                 <Link
                   to="/rejectedapp"
                   class={`nav-link text-white ${
-                    pathname.split("/").includes("rejectedapp") ? "active" : ""
+                    getClassName('rejectedapp')
                   }`}
                   aria-current="page"
                 >
@@ -97,14 +103,14 @@ const Sidebar = () => {
               class="dropdown-menu text-small shadow"
               aria-labelledby="dropdownUser2"
             >
-              <li>
+              {/* <li>
                 <a class="dropdown-item" href="#">
                   Profile
                 </a>
-              </li>
+              </li> */}
               <li>
                 <Button onClick={() => logout()} type="text">
-                  Text Button
+                  Logout
                 </Button>
               </li>
             </ul>
