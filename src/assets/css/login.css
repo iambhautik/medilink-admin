@@ -1,0 +1,21 @@
+.form_wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #000;
+    border-radius: 6px;
+    box-shadow: rgb(136 165 191 / 48%) 6px 2px 16px 0px, rgb(255 255 255 / 80%) -6px -2px 16px 0px;
+}
+.form_wrapper form {
+    padding: 25px;
+}
+
+@media (max-width: 450px) {
+    .form_wrapper {
+        left: 0%;
+        right: 0;
+        transform: translate(0%, -50%);
+        margin: 0 10px;
+    }
+}
