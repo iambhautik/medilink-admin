@@ -56,7 +56,6 @@ const DoctorProfile = () => {
   
   const handleUserSubmit = (data) => {
     setIsLoading(true);
-    console.log(data, "data");
 
     dispatch(UpdateDoctorProfile(data)).then((d) => {
       setIsLoading(false);

@@ -8,7 +8,6 @@ const Header = () => {
   const navigate = useNavigate();
 
   const logoutAdmin = (e) => {
-    console.log(e)
     jsCookie.remove();
     navigate('/login')
 

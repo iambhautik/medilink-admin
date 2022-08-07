@@ -1,9 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import { isValidArray } from '../../utils/Utilities';
 
 const Toggle = ({ register, type, setValue, errors, formData }) => {
-
-    console.log(isValidArray(formData), "formDataformData")
 
     const [monday, tuesday, wednesday, thursday, friday, saturday, sunday] = formData
 
@@ -14,7 +11,7 @@ const Toggle = ({ register, type, setValue, errors, formData }) => {
     const [isFriday, setIsFriday] = useState(friday?.isSelected || false);
     const [isSaturday, setIsSaturday] = useState(saturday?.isSelected || false);
     const [isSunday, setIsSunday] = useState(sunday?.isSelected || false);
-    
+
     useEffect(() => {
 
         setValue(`${type}_appointment_time[0].day`, 'Monday')
@@ -152,10 +149,10 @@ const Toggle = ({ register, type, setValue, errors, formData }) => {
                                     role="switch"
                                     type="checkbox"
                                     name="isSelected"
+                                    disabled
                                     {...register(`${type}_appointment_time[0].isSelected`, {
                                         onChange: (e) => handleCheckBox(0, e),
                                         value: monday?.isSelected,
-                                        disabled: true
                                     })}
                                 />{" "}
                                 <div className="inner-switch"></div>
@@ -169,10 +166,11 @@ const Toggle = ({ register, type, setValue, errors, formData }) => {
                                     <select
                                         className="form-select"
                                         name='start_time'
+                                        disabled
                                         {...register(`${type}_appointment_time[0].start_time`, {
                                             required: "Start time required",
                                             value: monday?.start_time,
-                                            disabled: true
+                                            // disabled: true
                                         })}
                                     >
                                         <option value="">Select Time</option>
@@ -185,10 +183,11 @@ const Toggle = ({ register, type, setValue, errors, formData }) => {
                                     <select
                                         className="form-select"
                                         name='end_time'
+                                        disabled
                                         {...register(`${type}_appointment_time[0].end_time`, {
                                             required: "End time required",
                                             value: monday?.end_time,
-                                            disabled: true
+                                            // disabled: true
                                         })}
                                     >
                                         <option value="">Select Time</option>
@@ -212,10 +211,11 @@ const Toggle = ({ register, type, setValue, errors, formData }) => {
                                     role="switch"
                                     type="checkbox"
                                     name="isSelected"
+                                    disabled
                                     {...register(`${type}_appointment_time[1].isSelected`, {
                                         onChange: (e) => handleCheckBox(1, e),
                                         value: tuesday?.isSelected,
-                                        disabled: true
+                                        // disabled: true
                                     })}
                                 />{" "}
                                 <div className="inner-switch"></div>
@@ -229,10 +229,11 @@ const Toggle = ({ register, type, setValue, errors, formData }) => {
                                     <select
                                         className="form-select"
                                         name='start_time'
+                                        disabled
                                         {...register(`${type}_appointment_time[1].start_time`, {
                                             required: "Start time required",
                                             value: tuesday?.start_time,
-                                            disabled: true
+                                            // disabled: true
                                         })}
                                     >
                                         <option value="">Select Time</option>
@@ -245,10 +246,11 @@ const Toggle = ({ register, type, setValue, errors, formData }) => {
                                     <select
                                         className="form-select"
                                         name='end_time'
+                                        disabled
                                         {...register(`${type}_appointment_time[1].end_time`, {
                                             required: "End time required",
                                             value: tuesday?.end_time,
-                                            disabled: true
+                                            // disabled: true
                                         })}
                                     >
                                         <option value="">Select Time</option>
@@ -272,10 +274,11 @@ const Toggle = ({ register, type, setValue, errors, formData }) => {
                                     role="switch"
                                     type="checkbox"
                                     name="isSelected"
+                                    disabled
                                     {...register(`${type}_appointment_time[2].isSelected`, {
                                         onChange: (e) => handleCheckBox(2, e),
                                         value: wednesday?.isSelected,
-                                        disabled: true
+                                        // disabled: true
                                     })}
                                 />{" "}
                                 <div className="inner-switch"></div>
@@ -289,10 +292,11 @@ const Toggle = ({ register, type, setValue, errors, formData }) => {
                                     <select
                                         className="form-select"
                                         name='start_time'
+                                        disabled
                                         {...register(`${type}_appointment_time[2].start_time`, {
                                             required: "Start time required",
                                             value: wednesday?.start_time,
-                                            disabled: true
+                                            // disabled: true
                                         })}
                                     >
                                         <option value="">Select Time</option>
@@ -305,10 +309,11 @@ const Toggle = ({ register, type, setValue, errors, formData }) => {
                                     <select
                                         className="form-select"
                                         name='end_time'
+                                        disabled
                                         {...register(`${type}_appointment_time[2].end_time`, {
                                             required: "End time required",
                                             value: wednesday?.end_time,
-                                            disabled: true
+                                            // disabled: true
                                         })}
                                     >
                                         <option value="">Select Time</option>
@@ -332,10 +337,11 @@ const Toggle = ({ register, type, setValue, errors, formData }) => {
                                     role="switch"
                                     type="checkbox"
                                     name="isSelected"
+                                    disabled
                                     {...register(`${type}_appointment_time[3].isSelected`, {
                                         onChange: (e) => handleCheckBox(3, e),
                                         value: thursday?.isSelected,
-                                        disabled: true
+                                        // disabled: true
                                     })}
                                 />{" "}
                                 <div className="inner-switch"></div>
@@ -349,10 +355,11 @@ const Toggle = ({ register, type, setValue, errors, formData }) => {
                                     <select
                                         className="form-select"
                                         name='start_time'
+                                        disabled
                                         {...register(`${type}_appointment_time[3].start_time`, {
                                             required: "Start time required",
                                             value: thursday?.start_time,
-                                            disabled: true
+                                            // disabled: true
                                         })}
                                     >
                                         <option value="">Select Time</option>
@@ -365,10 +372,11 @@ const Toggle = ({ register, type, setValue, errors, formData }) => {
                                     <select
                                         className="form-select"
                                         name='end_time'
+                                        disabled
                                         {...register(`${type}_appointment_time[3].end_time`, {
                                             required: "End time required",
                                             value: thursday?.end_time,
-                                            disabled: true
+                                            // disabled: true
                                         })}
                                     >
                                         <option value="">Select Time</option>
@@ -392,10 +400,11 @@ const Toggle = ({ register, type, setValue, errors, formData }) => {
                                     role="switch"
                                     type="checkbox"
                                     name="isSelected"
+                                    disabled
                                     {...register(`${type}_appointment_time[4].isSelected`, {
                                         onChange: (e) => handleCheckBox(4, e),
                                         value: friday?.isSelected,
-                                        disabled: true
+                                        // disabled: true
                                     })}
                                 />{" "}
                                 <div className="inner-switch"></div>
@@ -409,10 +418,11 @@ const Toggle = ({ register, type, setValue, errors, formData }) => {
                                     <select
                                         className="form-select"
                                         name='start_time'
+                                        disabled
                                         {...register(`${type}_appointment_time[4].start_time`, {
                                             required: "Start time required",
                                             value: friday?.start_time,
-                                            disabled: true
+                                            // disabled: true
                                         })}
                                     >
                                         <option value="">Select Time</option>
@@ -425,10 +435,11 @@ const Toggle = ({ register, type, setValue, errors, formData }) => {
                                     <select
                                         className="form-select"
                                         name='end_time'
+                                        disabled
                                         {...register(`${type}_appointment_time[4].end_time`, {
                                             required: "End time required",
                                             value: friday?.end_time,
-                                            disabled: true
+                                            // disabled: true
                                         })}
                                     >
                                         <option value="">Select Time</option>
@@ -452,10 +463,11 @@ const Toggle = ({ register, type, setValue, errors, formData }) => {
                                     role="switch"
                                     type="checkbox"
                                     name="isSelected"
+                                    disabled
                                     {...register(`${type}_appointment_time[5].isSelected`, {
                                         onChange: (e) => handleCheckBox(5, e),
                                         value: saturday?.isSelected,
-                                        disabled: true
+                                        // disabled: true
                                     })}
                                 />{" "}
                                 <div className="inner-switch"></div>
@@ -469,10 +481,11 @@ const Toggle = ({ register, type, setValue, errors, formData }) => {
                                     <select
                                         className="form-select"
                                         name='start_time'
+                                        disabled
                                         {...register(`${type}_appointment_time[5].start_time`, {
                                             required: "Start time required",
                                             value: saturday?.start_time,
-                                            disabled: true
+                                            // disabled: true
                                         })}
                                     >
                                         <option value="">Select Time</option>
@@ -485,10 +498,11 @@ const Toggle = ({ register, type, setValue, errors, formData }) => {
                                     <select
                                         className="form-select"
                                         name='end_time'
+                                        disabled
                                         {...register(`${type}_appointment_time[5].end_time`, {
                                             required: "End time required",
                                             value: saturday?.end_time,
-                                            disabled: true
+                                            // disabled: true
                                         })}
                                     >
                                         <option value="">Select Time</option>
@@ -512,10 +526,11 @@ const Toggle = ({ register, type, setValue, errors, formData }) => {
                                     role="switch"
                                     type="checkbox"
                                     name="isSelected"
+                                    disabled
                                     {...register(`${type}_appointment_time[6].isSelected`, {
                                         onChange: (e) => handleCheckBox(6, e),
                                         value: sunday?.isSelected,
-                                        disabled: true
+                                        // disabled: true
                                     })}
                                 />{" "}
                                 <div className="inner-switch"></div>
@@ -529,10 +544,11 @@ const Toggle = ({ register, type, setValue, errors, formData }) => {
                                     <select
                                         className="form-select"
                                         name='start_time'
+                                        disabled
                                         {...register(`${type}_appointment_time[6].start_time`, {
                                             required: "Start time required",
                                             value: sunday?.start_time,
-                                            disabled: true
+                                            // disabled: true
                                         })}
                                     >
                                         <option value="">Select Time</option>
@@ -545,10 +561,11 @@ const Toggle = ({ register, type, setValue, errors, formData }) => {
                                     <select
                                         className="form-select"
                                         name='end_time'
+                                        disabled
                                         {...register(`${type}_appointment_time[6].end_time`, {
                                             required: "End time required",
                                             value: sunday?.end_time,
-                                            disabled: true
+                                            // disabled: true
                                         })}
                                     >
                                         <option value="">Select Time</option>

@@ -16,7 +16,6 @@ const Login = () => {
   const onFinish = (values) => {
     dispatch(adminLogin(values)).then((res) => {
       const { payload } = res;
-      console.log(payload, "payload");
       if (payload.success) {
         const { result } = payload;
         Cookie.set("token", result?.[0].token);
