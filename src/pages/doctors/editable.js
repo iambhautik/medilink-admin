@@ -4,17 +4,20 @@ import Select from "react-select";
 import City from "../../utils/city.json";
 import {
   handleImageUpload,
-  isValidArray,
   sendNotification,
 } from "../../utils/Utilities";
 import { Tab, Tabs } from "react-bootstrap";
 import Toggle from "../../components/common/toggle";
 import SmallLoader from "../../components/common/SmallLoader";
 import { Image } from "antd";
+import { useDispatch } from "react-redux";
+import { updateDoctorDetails } from "../../container/actions/doctor/updateDoctorDetails.action";
+import { useParams } from "react-router-dom";
 
 const Editable = ({ doctorData, toggleInput }) => {
-  console.log(doctorData, 'doctorData')
   const imageRef = useRef();
+  const dispatch = useDispatch()
+  const {dId} = useParams()
 
   const [profilePic, setProfilePic] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -53,6 +56,15 @@ const Editable = ({ doctorData, toggleInput }) => {
 
   const updateDoctorData = (data) => {
     console.log(data);
+    dispatch(updateDoctorDetails({data, id : dId })).then((res) => {
+      const { payload: {success} } = res;
+      if(success){
+        sendNotification({type : "success", message: "Profile Updated"})
+      } else {
+        sendNotification({type : "error", message: "Something went wrong"})
+      }
+
+    })
   };
 
   return (
