@@ -84,7 +84,7 @@ const DoctorById = () => {
                 onClick={() => toggleInputState()}
                 className="btn btn-primary"
               >
-                {toggleInput ? 'Edit' : 'Disable Fields'}
+                {toggleInput ? 'Edit' : 'Update Profile'}
               </button>
             </div>
             <div>
