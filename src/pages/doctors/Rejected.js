@@ -27,7 +27,7 @@ const Rejected = () => {
   }, [doctorListReducer]);
 
   const goToDoctorById = (id, record) => {
-    navigate(`/doctor/${id}`, {
+    navigate(`/rejectedapp/${id}`, {
       state: record,
       replace: true
     })

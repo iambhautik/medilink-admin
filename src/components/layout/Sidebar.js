@@ -14,11 +14,31 @@ const Sidebar = () => {
   };
 
   const getClassName = (currentTab) => {
-    if(pathname.split("/").includes(currentTab)){
-      return 'active'
+    if (pathname.split("/").includes(currentTab)) {
+      return "active";
     }
-    return ''
-  }
+    return "";
+  };
+
+  const menuItems = [
+    {
+      path: "doctors",
+      title: "All application",
+    },
+    {
+      path: "pendingapp",
+      title: "Pending for approval",
+    },
+    {
+      path: "approved",
+      title: "Approved",
+    },
+    {
+      path: "rejectedapp",
+      title: "Rejected",
+    },
+  ];
+
   return (
     <Fragment>
       <div>
@@ -36,48 +56,18 @@ const Sidebar = () => {
           <div class="scroll_bar">
             <ul class="nav nav-pills flex-column mb-auto">
               <li class="nav-item">
-                <Link
-                  to="/doctors"
-                  class={`nav-link text-white ${
-                    getClassName('doctors')
-                  }`}
-                  aria-current="page"
-                >
-                  All application
-                </Link>
-              </li>
-              <li class="nav-item mt-3">
-                <Link
-                  to="/pendingapp"
-                  class={`nav-link text-white ${
-                    getClassName('pendingapp')
-                  }`}
-                  aria-current="page"
-                >
-                  Pending for approval
-                </Link>
-              </li>
-              <li class="nav-item mt-3">
-                <Link
-                  to="/approved"
-                  class={`nav-link text-white ${
-                    getClassName('approved')
-                  }`}
-                  aria-current="page"
-                >
-                  Approved
-                </Link>
-              </li>
-              <li class="nav-item mt-3">
-                <Link
-                  to="/rejectedapp"
-                  class={`nav-link text-white ${
-                    getClassName('rejectedapp')
-                  }`}
-                  aria-current="page"
-                >
-                  Rejected
-                </Link>
+                {menuItems.map(({ path, title }, i) => {
+                  return (
+                    <Fragment key={i}>
+                      <Link
+                        to={path}
+                        class={`nav-link text-white ${getClassName(path)}`}
+                      >
+                        {title}
+                      </Link>
+                    </Fragment>
+                  );
+                })}
               </li>
             </ul>
           </div>

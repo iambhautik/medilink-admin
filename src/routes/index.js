@@ -21,7 +21,10 @@ const AppRoutes = () => {
             <Route path='/pendingapp' element={<ProtectedRoutes><PendingForApproval /></ProtectedRoutes>} />
             <Route path='/rejectedapp' element={<ProtectedRoutes><Rejected /></ProtectedRoutes>} />
             <Route path='/approved' element={<ProtectedRoutes><Approved /></ProtectedRoutes>} />
-            <Route path='/doctor/:dId' element={<ProtectedRoutes><DoctorById /></ProtectedRoutes>} />
+            <Route path='/doctors/:dId' element={<ProtectedRoutes><DoctorById /></ProtectedRoutes>} />
+            <Route path='/pendingapp/:dId' element={<ProtectedRoutes><DoctorById /></ProtectedRoutes>} />
+            <Route path='/rejectedapp/:dId' element={<ProtectedRoutes><DoctorById /></ProtectedRoutes>} />
+            <Route path='/approved/:dId' element={<ProtectedRoutes><DoctorById /></ProtectedRoutes>} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -27,7 +27,7 @@ const Approved = () => {
   }, [doctorListReducer]);
 
   const goToDoctorById = (id, record) => {
-    navigate(`/doctor/${id}`, {
+    navigate(`/approved/${id}`, {
       state: record,
       replace: true
     })
