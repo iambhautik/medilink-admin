@@ -27,7 +27,7 @@ const PendingForApproval = () => {
   }, [doctorListReducer]);
 
   const goToDoctorById = (id, record) => {
-    navigate(`/doctor/${id}`, {
+    navigate(`/pendingapp/${id}`, {
       state: record,
       replace: true
     })
